@@ -11,6 +11,16 @@
 |
 */
 Route::group(['middleware' => ['web']], function(){
+    //Authentication RouteServiceProvider
+    Route::get('auth/login', 'Auth\AuthController@getLogin');
+    Route::post('auth/login','Auth\AuthController@postLogin');
+    Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+    //Registration Routes
+    Route::get('auth/register', 'Auth\AuthController@getRegister');
+    Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+
     Route::get('blog/{slug}', 'BlogController@getSingle')->where('slug', '[\w\d\-\_]+')->name('blog.single');
     Route::get('blog', 'BlogController@getIndex')->name('blog.index');
     Route::get('contact', 'PagesController@getContact');
