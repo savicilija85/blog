@@ -12,9 +12,9 @@
 */
 Route::group(['middleware' => ['web']], function(){
     //Authentication RouteServiceProvider
-    Route::get('auth/login', 'Auth\AuthController@getLogin');
-    Route::post('auth/login','Auth\AuthController@postLogin');
-    Route::get('auth/logout', 'Auth\AuthController@getLogout');
+    Route::get('auth/login', 'Auth\AuthController@showLogin');
+    Route::post('auth/login','Auth\AuthController@login');
+    Route::get('auth/logout', 'Auth\AuthController@logout');
 
     //Registration Routes
     Route::get('auth/register', 'Auth\AuthController@getRegister');

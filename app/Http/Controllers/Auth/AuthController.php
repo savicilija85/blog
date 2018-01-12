@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller{
 
@@ -36,4 +37,22 @@ class AuthController extends Controller{
     return view('auth.register');
   }
 
+  protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
+    }
+
+    public function postRegister(Request $request){
+        $this->validator($request->all());
+
+        $this->create($request->all());
+
+        $this->login($request);
+
+        return redirect('/');
+    }
 }
