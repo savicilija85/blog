@@ -10,11 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::group(['middleware' => ['web']], function(){
     //Authentication RouteServiceProvider
-    Route::get('auth/login', 'Auth\AuthController@showLogin');
+    Route::get('auth/login', 'Auth\AuthController@getLogin')->name('login');
     Route::post('auth/login','Auth\AuthController@login');
-    Route::get('auth/logout', 'Auth\AuthController@logout');
+    Route::get('auth/logout', 'Auth\AuthController@logout')->name('logout');
 
     //Registration Routes
     Route::get('auth/register', 'Auth\AuthController@getRegister');
