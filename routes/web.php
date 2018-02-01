@@ -27,6 +27,9 @@ Route::group(['middleware' => ['web']], function(){
     Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
+    // Categories
+    Route::resource('categories', 'CategoryController', ['except' => ['create']]);
+
     Route::get('blog/{slug}', 'BlogController@getSingle')->where('slug', '[\w\d\-\_]+')->name('blog.single');
     Route::get('blog', 'BlogController@getIndex')->name('blog.index');
     Route::get('contact', 'PagesController@getContact');
