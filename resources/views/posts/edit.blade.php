@@ -5,7 +5,18 @@
 @section('stylesheets')
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
 
+    <script>
+      tinymce.init({
+        selector: 'textarea',
+        plugins: ["lists advlist"],
+        menubar: false,
+        toolbar: 'undo, redo | styleselect | bold, italic | alignleft, aligncenter, alignright, alignjustify | bullist, numlist, outdent, indent'
+
+      });
+    </script>
+    
 @endsection
 
 @section('content')

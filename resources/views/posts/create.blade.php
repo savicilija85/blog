@@ -6,6 +6,17 @@
 
     {{ Html::style('css/parsley.css') }}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+
+    <script>
+      tinymce.init({
+        selector: 'textarea',
+        plugins: ["lists advlist"],
+        menubar: false,
+        toolbar: 'undo, redo | styleselect | bold, italic | alignleft, aligncenter, alignright, alignjustify | bullist, numlist, outdent, indent'
+
+      });
+    </script>
 
 @endsection
 
@@ -42,7 +53,7 @@
                 </select>
 
                 {{ Form::label('body', "Post Body:")}}
-                {{ Form::textarea('body', null, array('class' => 'form-control', 'required' => ''))}}
+                {{ Form::textarea('body', null, array('class' => 'form-control'))}}
 
                 {{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block', 'style' => 'margin-top: 20px'))}}
             {!! Form::close() !!}

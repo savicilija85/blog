@@ -77,7 +77,7 @@ class CommentsController extends Controller
       $comment->comment = $request->comment;
       $comment->save();
 
-      Session::flash('success', 'Coment updated');
+      Session::flash('success', 'Comment updated');
 
       return redirect()->route('posts.show', $comment->post->id);
 
