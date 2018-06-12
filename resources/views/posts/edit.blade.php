@@ -16,13 +16,13 @@
 
       });
     </script>
-    
+
 @endsection
 
 @section('content')
 
     <div class="row">
-        {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!}
+        {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT', 'files' => true]) !!}
         <div class="col-md-8">
             {{ Form::label('title', 'Title:')}}
             {{ Form::text('title', null, ['class' => 'form-control input-lg']) }}
@@ -35,6 +35,9 @@
 
             {{ Form::label('tags', 'Tags:', ['class' => 'form-spacing-top']) }}
             {{ Form::select('tags[]', $tags, null, ['class' => 'select2-multi form-control', 'multiple' => 'multiple']) }}
+
+            {{ Form::label('featured_image', 'Featured Image:') }}
+            {{ Form::file('featured_image', ['class' => 'form-spacing-top']) }}
 
             {{ Form::label('body', 'Body:', ['class' => 'form-spacing-top'])}}
             {{ Form::textarea('body',null, ['class' => 'form-control']) }}
